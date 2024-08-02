@@ -1,18 +1,28 @@
 section .data
     hello db 'Hello, World!', 0
 
+section .bss
+
 section .text
-    global _start
+    global _main
+    extern _ExitProcess@4
+    extern _WriteConsoleA@20
+    extern _GetStdHandle@4
 
-_start:
-    ; write our string to stdout
-    mov eax, 4        ; syscall number for sys_write
-    mov ebx, 1        ; file descriptor 1 (stdout)
-    mov ecx, hello    ; pointer to our string
-    mov edx, 13       ; length of our string
-    int 0x80          ; call kernel
+_main:
+    ; Get handle to stdout
+    push -11
+    call _GetStdHandle@4
+    mov ebx, eax
 
-    ; exit the program
-    mov eax, 1        ; syscall number for sys_exit
-    xor ebx, ebx      ; exit status 0
-    int 0x80          ; call kernel
+    ; Write our string to stdout
+    push 0
+    push 0
+    push 13
+    push hello
+    push ebx
+    call _WriteConsoleA@20
+
+    ; Exit the program
+    push 0
+    call _ExitProcess@4
