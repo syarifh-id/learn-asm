@@ -1,0 +1,45 @@
+int main() {
+
+
+-------------------------------------
+if eax < edx:
+	eax <- eax + 1
+else:
+	eax <- eax – 1
+end if
+
+-------------------------------------
+
+menjumlahkan nilai dari 0 sampai 9
+eax = 0
+ecx = 0
+for ecx from 0 to 9 do:
+	
+	eax <- eax + ecx
+
+end for
+
+--------------------------------------
+menjumlahkan nilai dari 0 sampai 9
+eax = 0
+ecx = 0
+while ecx < 10 do:
+	eax <- eax + ecx
+	ecx <- ecx + 1
+end while
+
+--------------------------------------
+menjumlahkan nilai dari 0 sampai 9 tetapi keluar dari loop ketika eax = 5
+eax = 0
+ecx = 0
+for ecx 0 to 9 do:
+	eax <- eax + ecx
+	if eax >= 5:
+	break
+end for
+--------------------
+
+
+}
+
+
